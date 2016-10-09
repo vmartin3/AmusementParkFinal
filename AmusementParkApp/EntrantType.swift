@@ -192,10 +192,6 @@ enum InputError: Error{
     case ChildOlderThanFive
 }
 
-enum AccessDenied: Error{
-    case NoAccess
-}
-
 //MARKER: Guest Helper Info
 protocol Guest {
     var DateOfBirth: Int? { get set}
@@ -299,9 +295,9 @@ extension NSDate {
 }
 
 //SWIPE METHODS
-func officeAccessSwipe(entrant: EmployeeEntrant) throws{
+func officeAccessSwipe(entrant: EmployeeEntrant){
     if entrant.type.canAccessOfficeArea != true {
-        throw AccessDenied.NoAccess
+        print("You do not have access to the office areas! Please contact customer support for more help")
     }else{
         print("Welcome into the office \(entrant.firstName)!")
     }

@@ -16,25 +16,20 @@ class ViewController: UIViewController {
         do{
             try createEmployeePass(entrant: manager)
         } catch InputError.FullNameNotProvided{
-            print("************SWIPE ATTEMPT FAILED************: \n Please Give Full Name")
+            print("Error: Please Give Full Name")
         }catch InputError.FullAddressNotProvided{
-            print("Please Provide a Full Address")
+            print("Error: Please Provide a Full Address")
         }catch InputError.NoDateOfBirthProvided{
-            print("Please Provide a Date of Birth")
+            print("Error: Please Provide a Date of Birth")
         }catch InputError.ChildOlderThanFive {
-            print("Child must be at least 5 years old")
+            print("Error: Child must be at least 5 years old")
         }
         catch {
             print("Something Went Wrong")
         }
         
-        do{
-            try officeAccessSwipe(entrant: manager)
-        } catch AccessDenied.NoAccess {
-            print("You do not have access into the office Area!")
-        } catch {
-            print("Something went wrong")
-        }
+        officeAccessSwipe(entrant: manager)
+   
     }
     
     
