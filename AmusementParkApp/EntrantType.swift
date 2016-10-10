@@ -191,6 +191,7 @@ enum InputError: Error{
     case ChildOlderThanFive
 }
 
+//MARKER: Different Access Areas
 enum Areas{
     case Office
     case Kitchen
@@ -198,7 +199,7 @@ enum Areas{
     case Maintenance
 }
 
-//MARKER: Guest Helper Info
+//MARKER: Base Level Entrant Info
 class Entrant: BasicEntrant{
     var firstName: String
     var lastName: String
@@ -231,6 +232,7 @@ protocol BasicEntrant {
     var entrantType: EntrantPassTypes {get set}
 }
 
+//MARKER: Guest and Employee Classes
 class Guest: Entrant{
     override init(firstName: String, lastName: String, streetAddress: String, city: String, state: String, zipCode: Int, dateOfBirth: Date, entrantType: EntrantPassTypes) {
         super.init(firstName:firstName, lastName:lastName, streetAddress:streetAddress, city:city, state:state, zipCode:zipCode, dateOfBirth:dateOfBirth, entrantType:entrantType)
@@ -243,8 +245,9 @@ class Employee: Entrant{
     }
 }
 
+
+//MARKER: Methods to create passes
 func createPass(entrant: Entrant) throws{
-if entrant is Employee {
         if ((entrant.firstName == " " || entrant.lastName == " ") && entrant is Employee) {
             throw InputError.FullNameNotProvided
         }
@@ -258,6 +261,22 @@ if entrant is Employee {
         print("Name: \(entrant.firstName) \(entrant.lastName) \nPass Type: \(entrant.entrantType) \n   <--Area Access--> \nAll Ride Acces: \(entrant.entrantType.canAccessAllRides) \nSkip All Ride Lines: \(entrant.entrantType.canSkipLine)\nAmusment Area Access:\(entrant.entrantType.canAccessAmusementArea) \nKitchen Acces:\(entrant.entrantType.canAccessKitchen) \nOffice Access: \(entrant.entrantType.canAccessOfficeArea) \nRide Controlls Access: \(entrant.entrantType.canAccessRideControlls) \nMaintenance Area: \(entrant.entrantType.canAccessMaintenanceArea)\n   <--Discounts--> \nFood Discount: \(entrant.entrantType.foodDiscount)%\nMerchandise Discount: \(entrant.entrantType.merchandiseDiscount)% \n----------------------\n")
     }
 }
+
+
+//MARKER: Handle birthday data
+func createBirthday(month: Int, day: Int, year: Int) -> Date{
+    let calendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)
+    let components = NSDateComponents()
+    components.year = year
+    components.month = month
+    components.day = day
+    return calendar!.date(from: components as DateComponents)!
+}
+
+func getAge(date: Date) -> Int {
+    let birthdayYear = NSCalendar.current.component(.year, from: date)
+    let age = NSCalendar.current.component(.year, from: NSDate() as Date) - birthdayYear
+    return age
 }
 
 //MARKER: Helper Protocols
@@ -279,36 +298,21 @@ protocol RideAccessability {
     var canSkipLine: Bool { get }
 }
 
-func createBirthday(month: Int, day: Int, year: Int) -> Date{
-    let calendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)
-    let components = NSDateComponents()
-    components.year = year
-    components.month = month
-    components.day = day
-    return calendar!.date(from: components as DateComponents)!
-}
-
-func getAge(date: Date) -> Int {
-    let birthdayYear = NSCalendar.current.component(.year, from: date)
-    let age = NSCalendar.current.component(.year, from: NSDate() as Date) - birthdayYear
-    return age
-}
-
 //SWIPE METHODS
 func accessSwipe(entrant: Entrant, area: Areas){
     if area == .Office && entrant.entrantType.canAccessOfficeArea != true {
-        print("You do not have access to this area! Please contact customer support for more help")
+        print("\(entrant.firstName), you do not have access to the \(Areas.Office)! Please contact customer support for more help  \n-------------")
     }
-    if area == .Maintenance && entrant.entrantType.canAccessMaintenanceArea != true {
-        print("You do not have access to this area! Please contact customer support for more help")
+    else if area == .Maintenance && entrant.entrantType.canAccessMaintenanceArea != true {
+        print("\(entrant.firstName), you do not have access to the \(Areas.Maintenance)! Please contact customer support for more help  \n-------------")
     }
-    if area == .RideControll && entrant.entrantType.canAccessRideControlls != true {
-        print("You do not have access to this area! Please contact customer support for more help")
+    else if area == .RideControll && entrant.entrantType.canAccessRideControlls != true {
+        print("\(entrant.firstName), you do not have access to the \(Areas.RideControll)! Please contact customer support for more help  \n-------------")
     }
-    if area == .Kitchen && entrant.entrantType.canAccessKitchen != true {
-        print("You do not have access to this area! Please contact customer support for more help")
+    else if area == .Kitchen && entrant.entrantType.canAccessKitchen != true {
+        print("\(entrant.firstName), you do not have access to the \(Areas.Kitchen)! Please contact customer support for more help \n-------------")
     }else{
-        print("You have access. Welcome In! \(entrant.firstName)!")
+        print("You have access. Welcome In! \(entrant.firstName)! \n----------------")
     }
 }
 
