@@ -186,77 +186,79 @@ enum EntrantPassTypes: Discountable, AreaAccessability, RideAccessability{
 
 //MARKER: Error Handling
 enum InputError: Error{
-    case NoDateOfBirthProvided
     case FullNameNotProvided
     case FullAddressNotProvided
     case ChildOlderThanFive
 }
 
+enum Areas{
+    case Office
+    case Kitchen
+    case RideControll
+    case Maintenance
+}
+
 //MARKER: Guest Helper Info
-protocol Guest {
-    var DateOfBirth: Int? { get set}
-    var firstName: String? { get set }
-    var lastName: String? { get set }
-    var streetAddress: String? { get set }
-    var city: String? { get set }
-    var state: String? { get set }
-    var zipCode: String? { get set }
-    var type: EntrantPassTypes {get set}
-}
-
-struct GuestEntrant: Guest{
-    var DateOfBirth: Int?
-    var firstName: String?
-    var lastName: String?
-    var streetAddress: String?
-    var city: String?
-    var state: String?
-    var zipCode: String?
-    var type: EntrantPassTypes
-}
-
-func createGuestPass(entrant: GuestEntrant) throws{
-    if entrant.firstName == " " || entrant.lastName == " " {
-        throw InputError.FullNameNotProvided
-    }
-    else if entrant.streetAddress == " " || entrant.city == " " || entrant.state == " " || entrant.zipCode == " "{
-        throw InputError.FullAddressNotProvided
-    }
-    print("Employee Name: \(entrant.firstName) \(entrant.lastName) \nPass Type: \(entrant.type) \n   <--Area Access--> \nAll Ride Acces: \(entrant.type.canAccessAllRides) \nSkip All Ride Lines: \(entrant.type.canSkipLine)\nAmusment Area Access:\(entrant.type.canAccessAmusementArea) \nKitchen Acces:\(entrant.type.canAccessKitchen) \nOffice Access: \(entrant.type.canAccessOfficeArea) \nRide Controlls Access: \(entrant.type.canAccessRideControlls) \nMaintenance Area: \(entrant.type.canAccessMaintenanceArea)\n   <--Discounts--> \nFood Discount: \(entrant.type.foodDiscount)%\nMerchandise Discount: \(entrant.type.merchandiseDiscount)% \n----------------------\n")
-}
-
-//MAKER: Employee Helper Info
-protocol HourlyEmployee {
-    var firstName: String { get set }
-    var lastName: String { get set }
-    var streetAddress: String { get set }
-    var city: String { get set }
-    var state: String { get set }
-    var zipCode: String { get set }
-    var type: EntrantPassTypes { get set}
-}
-
-struct EmployeeEntrant: HourlyEmployee{
+class Entrant: BasicEntrant{
     var firstName: String
     var lastName: String
     var streetAddress: String
     var city: String
     var state: String
-    var zipCode: String
-    var type: EntrantPassTypes
-}
-
-func createEmployeePass(entrant: EmployeeEntrant) throws{
-        if entrant.firstName == " " || entrant.lastName == " " {
-            throw InputError.FullNameNotProvided
-        }
-    else if entrant.streetAddress == " " || entrant.city == " " || entrant.state == " " || entrant.zipCode == " "{
-       throw InputError.FullAddressNotProvided
-    }else{
-        print("Entrant Name: \(entrant.firstName) \(entrant.lastName) \nPass Type: \(entrant.type) \n   <--Area Access--> \nAll Ride Acces: \(entrant.type.canAccessAllRides) \nSkip All Ride Lines: \(entrant.type.canSkipLine)\nAmusment Area Access:\(entrant.type.canAccessAmusementArea) \nKitchen Acces:\(entrant.type.canAccessKitchen) \nOffice Access: \(entrant.type.canAccessOfficeArea) \nRide Controlls Access: \(entrant.type.canAccessRideControlls) \nMaintenance Area: \(entrant.type.canAccessMaintenanceArea)\n   <--Discounts--> \nFood Discount: \(entrant.type.foodDiscount)%\nMerchandise Discount: \(entrant.type.merchandiseDiscount)% \n----------------------\n")
+    var zipCode: Int
+    var dateOfBirth: Date
+    var entrantType: EntrantPassTypes
+    init(firstName:String, lastName:String, streetAddress:String, city:String, state:String, zipCode:Int, dateOfBirth:Date, entrantType: EntrantPassTypes){
+        self.firstName = firstName
+        self.lastName = lastName
+        self.streetAddress = streetAddress
+        self.city = city
+        self.state = state
+        self.zipCode = zipCode
+        self.dateOfBirth = dateOfBirth
+        self.entrantType = entrantType
     }
 }
 
+protocol BasicEntrant {
+    var firstName: String { get set }
+    var lastName: String { get set }
+    var streetAddress: String { get set }
+    var city: String { get set }
+    var state: String { get set }
+    var zipCode: Int { get set }
+    var dateOfBirth: Date {get set}
+    var entrantType: EntrantPassTypes {get set}
+}
+
+class Guest: Entrant{
+    override init(firstName: String, lastName: String, streetAddress: String, city: String, state: String, zipCode: Int, dateOfBirth: Date, entrantType: EntrantPassTypes) {
+        super.init(firstName:firstName, lastName:lastName, streetAddress:streetAddress, city:city, state:state, zipCode:zipCode, dateOfBirth:dateOfBirth, entrantType:entrantType)
+    }
+}
+
+class Employee: Entrant{
+    override init(firstName: String, lastName: String, streetAddress: String, city: String, state: String, zipCode: Int, dateOfBirth: Date, entrantType: EntrantPassTypes) {
+        super.init(firstName:firstName, lastName:lastName, streetAddress:streetAddress, city:city, state:state, zipCode:zipCode, dateOfBirth:dateOfBirth, entrantType:entrantType)
+    }
+}
+
+func createPass(entrant: Entrant) throws{
+if entrant is Employee {
+        if ((entrant.firstName == " " || entrant.lastName == " ") && entrant is Employee) {
+            throw InputError.FullNameNotProvided
+        }
+        if ((entrant.streetAddress == " " || entrant.city == " " || entrant.state == " ") && entrant is Employee){
+            throw InputError.FullAddressNotProvided
+        }
+        if ((entrant.entrantType == .FreeChildGuest && getAge(date: entrant.dateOfBirth) > 5) && entrant is Guest) {
+            throw InputError.ChildOlderThanFive
+        }
+        else {
+        print("Name: \(entrant.firstName) \(entrant.lastName) \nPass Type: \(entrant.entrantType) \n   <--Area Access--> \nAll Ride Acces: \(entrant.entrantType.canAccessAllRides) \nSkip All Ride Lines: \(entrant.entrantType.canSkipLine)\nAmusment Area Access:\(entrant.entrantType.canAccessAmusementArea) \nKitchen Acces:\(entrant.entrantType.canAccessKitchen) \nOffice Access: \(entrant.entrantType.canAccessOfficeArea) \nRide Controlls Access: \(entrant.entrantType.canAccessRideControlls) \nMaintenance Area: \(entrant.entrantType.canAccessMaintenanceArea)\n   <--Discounts--> \nFood Discount: \(entrant.entrantType.foodDiscount)%\nMerchandise Discount: \(entrant.entrantType.merchandiseDiscount)% \n----------------------\n")
+    }
+}
+}
 
 //MARKER: Helper Protocols
 protocol Discountable {
@@ -277,102 +279,36 @@ protocol RideAccessability {
     var canSkipLine: Bool { get }
 }
 
-func dateFormatter(){
-    let dateFormat = DateFormatter()
-    dateFormat.dateFormat = "MM/dd/yyyy"
-    let date = NSDate()
-    print(date.age)
+func createBirthday(month: Int, day: Int, year: Int) -> Date{
+    let calendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)
+    let components = NSDateComponents()
+    components.year = year
+    components.month = month
+    components.day = day
+    return calendar!.date(from: components as DateComponents)!
 }
 
-func calculateAge(date: NSDate) -> Int {
-    return date.age
-}
-
-extension NSDate {
-    var age:Int {
-        return NSCalendar.current.component(.year, from: NSDate() as Date)
-    }
+func getAge(date: Date) -> Int {
+    let birthdayYear = NSCalendar.current.component(.year, from: date)
+    let age = NSCalendar.current.component(.year, from: NSDate() as Date) - birthdayYear
+    return age
 }
 
 //SWIPE METHODS
-func officeAccessSwipe(entrant: EmployeeEntrant){
-    if entrant.type.canAccessOfficeArea != true {
-        print("You do not have access to the office areas! Please contact customer support for more help")
+func accessSwipe(entrant: Entrant, area: Areas){
+    if area == .Office && entrant.entrantType.canAccessOfficeArea != true {
+        print("You do not have access to this area! Please contact customer support for more help")
+    }
+    if area == .Maintenance && entrant.entrantType.canAccessMaintenanceArea != true {
+        print("You do not have access to this area! Please contact customer support for more help")
+    }
+    if area == .RideControll && entrant.entrantType.canAccessRideControlls != true {
+        print("You do not have access to this area! Please contact customer support for more help")
+    }
+    if area == .Kitchen && entrant.entrantType.canAccessKitchen != true {
+        print("You do not have access to this area! Please contact customer support for more help")
     }else{
-        print("Welcome into the office \(entrant.firstName)!")
+        print("You have access. Welcome In! \(entrant.firstName)!")
     }
 }
 
-func officeAccessSwipe(entrant: GuestEntrant){
-    if entrant.type.canAccessOfficeArea != true {
-        print("You do not have access to the office areas! Please contact customer support for more help")
-    }else{
-        print("Welcome into the office \(entrant.firstName)!")
-    }
-}
-
-
-
-//MARKER: CREATE ENTRANTS
-
-//let manager = EmployeeEntrant(firstName: "Vernon", lastName: "Martin", streetAddress: "262 Webster Avenue", city: "New Rochelle", state: "NY", zipCode: "10801", type: .Manager)
-//do{
-//    try createEmployeePass(entrant: manager)
-//} catch{
-//    print(InputError.FullNameNotProvided)
-//}
-
-//*********This entrant has a missing plug value that will throw an error please uncomment to test*********
-//let maintenanceEmployee = EmployeeEntrant(firstName: " ", lastName: "Jack", streetAddress: "262 Dripler Avenue", city: "New Rochelle", state: "NY", zipCode: "10801", type: .MaintenanceHourly)
-//do{
-//    try createEmployeePass(entrant: maintenanceEmployee)
-//} catch{
-//    print(InputError.FullNameNotProvided)
-//}
-
-//let maintenanceEmployee = EmployeeEntrant(firstName: "Bob", lastName: "Jacky", streetAddress: " ", city: " ", state: "NY", zipCode: "10801", type: .MaintenanceHourly)
-//do{
-//    try createEmployeePass(entrant: maintenanceEmployee)
-//} catch{
-//    //print(InputError.FullAddressNotProvided(required: "You must provide a full address before continuing. Thanks!"))
-//}
-//
-//let rideServicesEmployee = EmployeeEntrant(firstName: "Sam", lastName: "Smith", streetAddress: "231 Cribster Avenue", city: "New Rochelle", state: "NY", zipCode: "10801", type: .RideServicesHourly)
-//do{
-//    try createEmployeePass(entrant: rideServicesEmployee)
-//} catch{
-//    print(InputError.FullNameNotProvided)
-//}
-//
-//let foodServicesEmployee = EmployeeEntrant(firstName: "Eric", lastName: "Taylor", streetAddress: "32 Jonston Avenue", city: "New Rochelle", state: "NY", zipCode: "10801", type: .FoodServicesHourly)
-//do{
-//    try createEmployeePass(entrant: foodServicesEmployee)
-//} catch{
-//    print(InputError.FullNameNotProvided)
-//}
-//
-//let classicGuest = GuestEntrant(DateOfBirth: calculateAge(date: NSDate()), firstName: "Frank", lastName: "Smith", streetAddress: "243 Broad St" , city: "Wester", state: "NY", zipCode: 8213, type: .ClassicGuest)
-//do{
-//    try createGuestPass(entrant: classicGuest)
-//} catch{
-//    print(InputError.FullNameNotProvided)
-//}
-//
-//let vipGuest = GuestEntrant(DateOfBirth: calculateAge(date: NSDate()), firstName: "Evan", lastName: "Lifty", streetAddress: "21 Ivan St" , city: "Wester", state: "NY", zipCode: 8213, type: .VipGuest)
-//do{
-//    try createGuestPass(entrant: vipGuest)
-//} catch{
-//    print(InputError.FullNameNotProvided)
-//}
-//
-//let freeChild = GuestEntrant(DateOfBirth: calculateAge(date: NSDate()), firstName: "Shark", lastName: "Nado", streetAddress: "23 Friendly St" , city: "Wester", state: "NY", zipCode: 8213, type: .FreeChildGuest)
-//do{
-//    try createGuestPass(entrant: freeChild)
-//} catch{
-//    print(InputError.FullNameNotProvided)
-//}
-
-
-////MARKER: SWIPE METHODS
-//officeAccessSwipe(entrant: manager)
-//officeAccessSwipe(entrant: vipGuest)
