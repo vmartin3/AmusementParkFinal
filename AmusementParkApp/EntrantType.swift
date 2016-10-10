@@ -234,14 +234,14 @@ protocol BasicEntrant {
 
 //MARKER: Guest and Employee Classes
 class Guest: Entrant{
-    override init(firstName: String, lastName: String, streetAddress: String, city: String, state: String, zipCode: Int, dateOfBirth: Date, entrantType: EntrantPassTypes) {
-        super.init(firstName:firstName, lastName:lastName, streetAddress:streetAddress, city:city, state:state, zipCode:zipCode, dateOfBirth:dateOfBirth, entrantType:entrantType)
+    override init(firstName: String?, lastName: String?, streetAddress: String?, city: String?, state: String?, zipCode: Int?, dateOfBirth: Date?, entrantType: EntrantPassTypes?) {
+        super.init(firstName:firstName!, lastName:lastName!, streetAddress:streetAddress!, city:city!, state:state!, zipCode:zipCode!, dateOfBirth:dateOfBirth!, entrantType:entrantType!)
     }
 }
 
 class Employee: Entrant{
-    override init(firstName: String, lastName: String, streetAddress: String, city: String, state: String, zipCode: Int, dateOfBirth: Date, entrantType: EntrantPassTypes) {
-        super.init(firstName:firstName, lastName:lastName, streetAddress:streetAddress, city:city, state:state, zipCode:zipCode, dateOfBirth:dateOfBirth, entrantType:entrantType)
+    override init(firstName: String!, lastName: String!, streetAddress: String!, city: String!, state: String!, zipCode: Int!, dateOfBirth: Date?, entrantType: EntrantPassTypes!) {
+        super.init(firstName:firstName!, lastName:lastName!, streetAddress:streetAddress!, city:city!, state:state!, zipCode:zipCode!, dateOfBirth:dateOfBirth!, entrantType:entrantType!)
     }
 }
 
@@ -312,7 +312,7 @@ func accessSwipe(entrant: Entrant, area: Areas){
     else if area == .Kitchen && entrant.entrantType.canAccessKitchen != true {
         print("\(entrant.firstName), you do not have access to the \(Areas.Kitchen)! Please contact customer support for more help \n-------------\n\n")
     }else{
-        print("You have access. Welcome In! \(entrant.firstName)! \n----------------\n\n")
+        print("You have access. Welcome In \(entrant.firstName)! \n----------------\n\n")
     }
 }
 
