@@ -195,7 +195,7 @@ enum InputError: Error{
 enum Areas{
     case Office
     case Kitchen
-    case RideControll
+    case RideControl
     case Maintenance
 }
 
@@ -258,7 +258,7 @@ func createPass(entrant: Entrant) throws{
             throw InputError.ChildOlderThanFive
         }
         else {
-        print("Name: \(entrant.firstName) \(entrant.lastName) \nPass Type: \(entrant.entrantType) \n   <--Area Access--> \nAll Ride Acces: \(entrant.entrantType.canAccessAllRides) \nSkip All Ride Lines: \(entrant.entrantType.canSkipLine)\nAmusment Area Access:\(entrant.entrantType.canAccessAmusementArea) \nKitchen Acces:\(entrant.entrantType.canAccessKitchen) \nOffice Access: \(entrant.entrantType.canAccessOfficeArea) \nRide Controlls Access: \(entrant.entrantType.canAccessRideControlls) \nMaintenance Area: \(entrant.entrantType.canAccessMaintenanceArea)\n   <--Discounts--> \nFood Discount: \(entrant.entrantType.foodDiscount)%\nMerchandise Discount: \(entrant.entrantType.merchandiseDiscount)% \n----------------------\n")
+        print("Name: \(entrant.firstName) \(entrant.lastName) \nPass Type: \(entrant.entrantType) \n   <--Area Access--> \nAll Ride Acces: \(entrant.entrantType.canAccessAllRides) \nSkip All Ride Lines: \(entrant.entrantType.canSkipLine)\nAmusment Area Access:\(entrant.entrantType.canAccessAmusementArea) \nKitchen Acces:\(entrant.entrantType.canAccessKitchen) \nOffice Access: \(entrant.entrantType.canAccessOfficeArea) \nRide Controlls Access: \(entrant.entrantType.canAccessRideControlls) \nMaintenance Area: \(entrant.entrantType.canAccessMaintenanceArea)\n   <--Discounts--> \nFood Discount: \(entrant.entrantType.foodDiscount)%\nMerchandise Discount: \(entrant.entrantType.merchandiseDiscount)% \n----------------------")
     }
 }
 
@@ -301,18 +301,18 @@ protocol RideAccessability {
 //SWIPE METHODS
 func accessSwipe(entrant: Entrant, area: Areas){
     if area == .Office && entrant.entrantType.canAccessOfficeArea != true {
-        print("\(entrant.firstName), you do not have access to the \(Areas.Office)! Please contact customer support for more help  \n-------------")
+        print("\(entrant.firstName), you do not have access to the \(Areas.Office)! Please contact customer support for more help  \n-------------\n\n")
     }
     else if area == .Maintenance && entrant.entrantType.canAccessMaintenanceArea != true {
-        print("\(entrant.firstName), you do not have access to the \(Areas.Maintenance)! Please contact customer support for more help  \n-------------")
+        print("\(entrant.firstName), you do not have access to the \(Areas.Maintenance)! Please contact customer support for more help  \n-------------\n\n")
     }
-    else if area == .RideControll && entrant.entrantType.canAccessRideControlls != true {
-        print("\(entrant.firstName), you do not have access to the \(Areas.RideControll)! Please contact customer support for more help  \n-------------")
+    else if area == .RideControl && entrant.entrantType.canAccessRideControlls != true {
+        print("\(entrant.firstName), you do not have access to the \(Areas.RideControl)! Please contact customer support for more help  \n-------------\n\n")
     }
     else if area == .Kitchen && entrant.entrantType.canAccessKitchen != true {
-        print("\(entrant.firstName), you do not have access to the \(Areas.Kitchen)! Please contact customer support for more help \n-------------")
+        print("\(entrant.firstName), you do not have access to the \(Areas.Kitchen)! Please contact customer support for more help \n-------------\n\n")
     }else{
-        print("You have access. Welcome In! \(entrant.firstName)! \n----------------")
+        print("You have access. Welcome In! \(entrant.firstName)! \n----------------\n\n")
     }
 }
 
