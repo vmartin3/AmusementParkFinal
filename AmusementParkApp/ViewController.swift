@@ -55,7 +55,7 @@ class ViewController: UIViewController {
     catch {
         print("Something Went Wrong")
     }
-    //print("\(guest1.firstName) is \(getAge(date: guest1.dateOfBirth)) years old!")    
+    //print("\(guest1.firstName) is \(getAge(date: guest1.dateOfBirth)) years old!")
 }
 
 
