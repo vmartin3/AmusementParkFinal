@@ -35,17 +35,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		76739A191D8605F20030DD83 /* AmusementParkApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AmusementParkApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		76739A191D8605F20030DD83 /* AmusementParkAppGUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AmusementParkAppGUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76739A1C1D8605F20030DD83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76739A1E1D8605F30030DD83 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		76739A211D8605F30030DD83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		76739A231D8605F30030DD83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		76739A261D8605F30030DD83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		76739A281D8605F30030DD83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		76739A2D1D8605F30030DD83 /* AmusementParkAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AmusementParkAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		76739A2D1D8605F30030DD83 /* AmusementParkAppGUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AmusementParkAppGUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		76739A311D8605F30030DD83 /* AmusementParkAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmusementParkAppTests.swift; sourceTree = "<group>"; };
 		76739A331D8605F30030DD83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		76739A381D8605F30030DD83 /* AmusementParkAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AmusementParkAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		76739A381D8605F30030DD83 /* AmusementParkAppGUIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AmusementParkAppGUIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		76739A3C1D8605F30030DD83 /* AmusementParkAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmusementParkAppUITests.swift; sourceTree = "<group>"; };
 		76739A3E1D8605F30030DD83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76C83EFF1D987188006AAEED /* EntrantType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntrantType.swift; sourceTree = "<group>"; };
@@ -89,9 +89,9 @@
 		76739A1A1D8605F20030DD83 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				76739A191D8605F20030DD83 /* AmusementParkApp.app */,
-				76739A2D1D8605F30030DD83 /* AmusementParkAppTests.xctest */,
-				76739A381D8605F30030DD83 /* AmusementParkAppUITests.xctest */,
+				76739A191D8605F20030DD83 /* AmusementParkAppGUI.app */,
+				76739A2D1D8605F30030DD83 /* AmusementParkAppGUITests.xctest */,
+				76739A381D8605F30030DD83 /* AmusementParkAppGUIUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -131,9 +131,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		76739A181D8605F20030DD83 /* AmusementParkApp */ = {
+		76739A181D8605F20030DD83 /* AmusementParkAppGUI */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 76739A411D8605F30030DD83 /* Build configuration list for PBXNativeTarget "AmusementParkApp" */;
+			buildConfigurationList = 76739A411D8605F30030DD83 /* Build configuration list for PBXNativeTarget "AmusementParkAppGUI" */;
 			buildPhases = (
 				76739A151D8605F20030DD83 /* Sources */,
 				76739A161D8605F20030DD83 /* Frameworks */,
@@ -143,14 +143,14 @@
 			);
 			dependencies = (
 			);
-			name = AmusementParkApp;
+			name = AmusementParkAppGUI;
 			productName = AmusementParkApp;
-			productReference = 76739A191D8605F20030DD83 /* AmusementParkApp.app */;
+			productReference = 76739A191D8605F20030DD83 /* AmusementParkAppGUI.app */;
 			productType = "com.apple.product-type.application";
 		};
-		76739A2C1D8605F30030DD83 /* AmusementParkAppTests */ = {
+		76739A2C1D8605F30030DD83 /* AmusementParkAppGUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 76739A441D8605F30030DD83 /* Build configuration list for PBXNativeTarget "AmusementParkAppTests" */;
+			buildConfigurationList = 76739A441D8605F30030DD83 /* Build configuration list for PBXNativeTarget "AmusementParkAppGUITests" */;
 			buildPhases = (
 				76739A291D8605F30030DD83 /* Sources */,
 				76739A2A1D8605F30030DD83 /* Frameworks */,
@@ -161,14 +161,14 @@
 			dependencies = (
 				76739A2F1D8605F30030DD83 /* PBXTargetDependency */,
 			);
-			name = AmusementParkAppTests;
+			name = AmusementParkAppGUITests;
 			productName = AmusementParkAppTests;
-			productReference = 76739A2D1D8605F30030DD83 /* AmusementParkAppTests.xctest */;
+			productReference = 76739A2D1D8605F30030DD83 /* AmusementParkAppGUITests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		76739A371D8605F30030DD83 /* AmusementParkAppUITests */ = {
+		76739A371D8605F30030DD83 /* AmusementParkAppGUIUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 76739A471D8605F30030DD83 /* Build configuration list for PBXNativeTarget "AmusementParkAppUITests" */;
+			buildConfigurationList = 76739A471D8605F30030DD83 /* Build configuration list for PBXNativeTarget "AmusementParkAppGUIUITests" */;
 			buildPhases = (
 				76739A341D8605F30030DD83 /* Sources */,
 				76739A351D8605F30030DD83 /* Frameworks */,
@@ -179,9 +179,9 @@
 			dependencies = (
 				76739A3A1D8605F30030DD83 /* PBXTargetDependency */,
 			);
-			name = AmusementParkAppUITests;
+			name = AmusementParkAppGUIUITests;
 			productName = AmusementParkAppUITests;
-			productReference = 76739A381D8605F30030DD83 /* AmusementParkAppUITests.xctest */;
+			productReference = 76739A381D8605F30030DD83 /* AmusementParkAppGUIUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -213,7 +213,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 76739A141D8605F20030DD83 /* Build configuration list for PBXProject "AmusementParkApp" */;
+			buildConfigurationList = 76739A141D8605F20030DD83 /* Build configuration list for PBXProject "AmusementParkAppGUI" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -226,9 +226,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				76739A181D8605F20030DD83 /* AmusementParkApp */,
-				76739A2C1D8605F30030DD83 /* AmusementParkAppTests */,
-				76739A371D8605F30030DD83 /* AmusementParkAppUITests */,
+				76739A181D8605F20030DD83 /* AmusementParkAppGUI */,
+				76739A2C1D8605F30030DD83 /* AmusementParkAppGUITests */,
+				76739A371D8605F30030DD83 /* AmusementParkAppGUIUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -292,12 +292,12 @@
 /* Begin PBXTargetDependency section */
 		76739A2F1D8605F30030DD83 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 76739A181D8605F20030DD83 /* AmusementParkApp */;
+			target = 76739A181D8605F20030DD83 /* AmusementParkAppGUI */;
 			targetProxy = 76739A2E1D8605F30030DD83 /* PBXContainerItemProxy */;
 		};
 		76739A3A1D8605F30030DD83 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 76739A181D8605F20030DD83 /* AmusementParkApp */;
+			target = 76739A181D8605F20030DD83 /* AmusementParkAppGUI */;
 			targetProxy = 76739A391D8605F30030DD83 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -443,7 +443,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = VernonMartin.AmusementParkAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AmusementParkApp.app/AmusementParkApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AmusementParkAppGUI.app/AmusementParkAppGUI";
 			};
 			name = Debug;
 		};
@@ -456,7 +456,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = VernonMartin.AmusementParkAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AmusementParkApp.app/AmusementParkApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AmusementParkAppGUI.app/AmusementParkAppGUI";
 			};
 			name = Release;
 		};
@@ -487,7 +487,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		76739A141D8605F20030DD83 /* Build configuration list for PBXProject "AmusementParkApp" */ = {
+		76739A141D8605F20030DD83 /* Build configuration list for PBXProject "AmusementParkAppGUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				76739A3F1D8605F30030DD83 /* Debug */,
@@ -496,7 +496,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		76739A411D8605F30030DD83 /* Build configuration list for PBXNativeTarget "AmusementParkApp" */ = {
+		76739A411D8605F30030DD83 /* Build configuration list for PBXNativeTarget "AmusementParkAppGUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				76739A421D8605F30030DD83 /* Debug */,
@@ -505,7 +505,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		76739A441D8605F30030DD83 /* Build configuration list for PBXNativeTarget "AmusementParkAppTests" */ = {
+		76739A441D8605F30030DD83 /* Build configuration list for PBXNativeTarget "AmusementParkAppGUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				76739A451D8605F30030DD83 /* Debug */,
@@ -514,7 +514,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		76739A471D8605F30030DD83 /* Build configuration list for PBXNativeTarget "AmusementParkAppUITests" */ = {
+		76739A471D8605F30030DD83 /* Build configuration list for PBXNativeTarget "AmusementParkAppGUIUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				76739A481D8605F30030DD83 /* Debug */,

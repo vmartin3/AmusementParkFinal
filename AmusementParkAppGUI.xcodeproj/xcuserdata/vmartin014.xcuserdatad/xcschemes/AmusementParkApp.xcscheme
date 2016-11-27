@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "76739A181D8605F20030DD83"
-               BuildableName = "AmusementParkApp.app"
-               BlueprintName = "AmusementParkApp"
-               ReferencedContainer = "container:AmusementParkApp.xcodeproj">
+               BuildableName = "AmusementParkAppGUI.app"
+               BlueprintName = "AmusementParkAppGUI"
+               ReferencedContainer = "container:AmusementParkAppGUI.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "76739A2C1D8605F30030DD83"
-               BuildableName = "AmusementParkAppTests.xctest"
-               BlueprintName = "AmusementParkAppTests"
-               ReferencedContainer = "container:AmusementParkApp.xcodeproj">
+               BuildableName = "AmusementParkAppGUITests.xctest"
+               BlueprintName = "AmusementParkAppGUITests"
+               ReferencedContainer = "container:AmusementParkAppGUI.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "76739A371D8605F30030DD83"
-               BuildableName = "AmusementParkAppUITests.xctest"
-               BlueprintName = "AmusementParkAppUITests"
-               ReferencedContainer = "container:AmusementParkApp.xcodeproj">
+               BuildableName = "AmusementParkAppGUIUITests.xctest"
+               BlueprintName = "AmusementParkAppGUIUITests"
+               ReferencedContainer = "container:AmusementParkAppGUI.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "76739A181D8605F20030DD83"
-            BuildableName = "AmusementParkApp.app"
-            BlueprintName = "AmusementParkApp"
-            ReferencedContainer = "container:AmusementParkApp.xcodeproj">
+            BuildableName = "AmusementParkAppGUI.app"
+            BlueprintName = "AmusementParkAppGUI"
+            ReferencedContainer = "container:AmusementParkAppGUI.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "76739A181D8605F20030DD83"
-            BuildableName = "AmusementParkApp.app"
-            BlueprintName = "AmusementParkApp"
-            ReferencedContainer = "container:AmusementParkApp.xcodeproj">
+            BuildableName = "AmusementParkAppGUI.app"
+            BlueprintName = "AmusementParkAppGUI"
+            ReferencedContainer = "container:AmusementParkAppGUI.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <EnvironmentVariables>
@@ -102,9 +102,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "76739A181D8605F20030DD83"
-            BuildableName = "AmusementParkApp.app"
-            BlueprintName = "AmusementParkApp"
-            ReferencedContainer = "container:AmusementParkApp.xcodeproj">
+            BuildableName = "AmusementParkAppGUI.app"
+            BlueprintName = "AmusementParkAppGUI"
+            ReferencedContainer = "container:AmusementParkAppGUI.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
