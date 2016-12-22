@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		761A0D0F1DEBCF950017DF33 /* CreatePass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761A0D0E1DEBCF950017DF33 /* CreatePass.swift */; };
 		76739A1D1D8605F20030DD83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76739A1C1D8605F20030DD83 /* AppDelegate.swift */; };
 		76739A1F1D8605F30030DD83 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76739A1E1D8605F30030DD83 /* ViewController.swift */; };
 		76739A221D8605F30030DD83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76739A201D8605F30030DD83 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		761A0D0E1DEBCF950017DF33 /* CreatePass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePass.swift; sourceTree = "<group>"; };
 		76739A191D8605F20030DD83 /* AmusementParkAppGUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AmusementParkAppGUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76739A1C1D8605F20030DD83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76739A1E1D8605F30030DD83 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				76739A1E1D8605F30030DD83 /* ViewController.swift */,
 				76C83EFF1D987188006AAEED /* EntrantType.swift */,
 				76739A201D8605F30030DD83 /* Main.storyboard */,
+				761A0D0E1DEBCF950017DF33 /* CreatePass.swift */,
 				76739A231D8605F30030DD83 /* Assets.xcassets */,
 				76739A251D8605F30030DD83 /* LaunchScreen.storyboard */,
 				76739A281D8605F30030DD83 /* Info.plist */,
@@ -267,6 +270,7 @@
 			files = (
 				76739A1F1D8605F30030DD83 /* ViewController.swift in Sources */,
 				76C83F001D987188006AAEED /* EntrantType.swift in Sources */,
+				761A0D0F1DEBCF950017DF33 /* CreatePass.swift in Sources */,
 				76739A1D1D8605F20030DD83 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
