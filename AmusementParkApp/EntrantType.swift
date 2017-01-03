@@ -309,10 +309,10 @@ class Entrant: BasicEntrant{
     var streetAddress: String
     var city: String
     var state: String
-    var zipCode: Int
+    var zipCode: String
     var dateOfBirth: Date
     var entrantType: EntrantPassTypes
-    init(firstName:String, lastName:String, streetAddress:String, city:String, state:String, zipCode:Int, dateOfBirth:Date, entrantType: EntrantPassTypes){
+    init(firstName:String, lastName:String, streetAddress:String, city:String, state:String, zipCode:String, dateOfBirth:Date, entrantType: EntrantPassTypes){
         self.firstName = firstName
         self.lastName = lastName
         self.streetAddress = streetAddress
@@ -330,36 +330,23 @@ protocol BasicEntrant {
     var streetAddress: String { get set }
     var city: String { get set }
     var state: String { get set }
-    var zipCode: Int { get set }
+    var zipCode: String { get set }
     var dateOfBirth: Date {get set}
     var entrantType: EntrantPassTypes {get set}
 }
 
-//MARKER: Guest and Employee Classes
-//class Guest: Entrant{
-//    override init(firstName: String?, lastName: String?, streetAddress: String?, city: String?, state: String?, zipCode: Int?, dateOfBirth: Date?, entrantType: EntrantPassTypes?) {
-//        super.init(firstName:firstName!, lastName:lastName!, streetAddress:streetAddress!, city:city!, state:state!, zipCode:zipCode!, dateOfBirth:dateOfBirth!, entrantType:entrantType!)
-//    }
-//}
-//
-//class Employee: Entrant{
-//    override init(firstName: String!, lastName: String!, streetAddress: String!, city: String!, state: String!, zipCode: Int!, dateOfBirth: Date?, entrantType: EntrantPassTypes!) {
-//        super.init(firstName:firstName!, lastName:lastName!, streetAddress:streetAddress!, city:city!, state:state!, zipCode:zipCode!, dateOfBirth:dateOfBirth!, entrantType:entrantType!)
-//    }
-//}
-
 
 //MARKER: Methods to create passes
 func createPass(entrant: Entrant) throws{
-    if ((ViewController.entrant.firstName == "" || ViewController.entrant.lastName == "") && (entrant.entrantType == .FoodServicesHourly || entrant.entrantType == .MaintenanceHourly || entrant.entrantType == .RideServicesHourly)) {
+    if ((ViewController.entrant.firstName == "" || ViewController.entrant.lastName == "") && (entrant.entrantType == .FoodServicesHourly || entrant.entrantType == .MaintenanceHourly || entrant.entrantType == .RideServicesHourly || entrant.entrantType == .SeniorGuest || entrant.entrantType == .Manager || entrant.entrantType == .SeasonPassGuest || entrant.entrantType == .Vendor)) {
             throw InputError.FullNameNotProvided
         }
     
-    if ((ViewController.entrant.streetAddress == "" || ViewController.entrant.city == "" || ViewController.entrant.state == "") && (entrant.entrantType == .FoodServicesHourly || entrant.entrantType == .MaintenanceHourly || entrant.entrantType == .RideServicesHourly || entrant.entrantType == .ContractEmployee)){
+    if ((ViewController.entrant.streetAddress == "" || ViewController.entrant.city == "" || ViewController.entrant.state == "" || ViewController.entrant.zipCode == "") && (entrant.entrantType == .FoodServicesHourly || entrant.entrantType == .MaintenanceHourly || entrant.entrantType == .RideServicesHourly || entrant.entrantType == .ContractEmployee || entrant.entrantType == .Manager || entrant.entrantType == .SeasonPassGuest)){
             throw InputError.FullAddressNotProvided
         }
     
-        if ((ViewController.entrant.entrantType == .FreeChildGuest) && (ViewController.entrantAge > 5 || ViewController.birthday == "")) {
+        if ((ViewController.entrant.entrantType == .FreeChildGuest || ViewController.entrant.entrantType == .SeniorGuest) && (ViewController.entrantAge > 5 || ViewController.birthday == "")) {
             throw InputError.ChildOlderThanFive
         }
         else {

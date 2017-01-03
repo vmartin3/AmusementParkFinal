@@ -19,7 +19,8 @@ class CreatePass: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Second VC, first name: \(ViewController.entrant.firstName)")
+        
+        //Sets Labels for Second VC
         userName.text = ViewController.entrant.firstName
         passType.text = ViewController.entrant.entrantType.passType
         featureOne.text = "•\(String (ViewController.entrant.entrantType.foodDiscount))% Food Discount"
@@ -29,13 +30,10 @@ class CreatePass: UIViewController {
         }else{
             featureThree.text = "•Cannot Access All Rides"
         }
-        
-        
-        
         // Do any additional setup after loading the view.
     }
     
-    
+    //Displays privledges for that specific entrant
     @IBAction func areaAccessPressed(_ sender: AnyObject) {
         testResultText.text = "•Kitchen Access: \(ViewController.entrant.entrantType.canAccessKitchen)  \n •Office Access: \(ViewController.entrant.entrantType.canAccessOfficeArea) \n •Maintenance Access: \(ViewController.entrant.entrantType.canAccessMaintenanceArea)"
     }
@@ -49,9 +47,6 @@ class CreatePass: UIViewController {
         testResultText.text = "•Food Discount: \(ViewController.entrant.entrantType.foodDiscount)% \n •Merchandise Discount: \(ViewController.entrant.entrantType.merchandiseDiscount)%"
     }
     
-    
-    
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

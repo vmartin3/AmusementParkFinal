@@ -68,7 +68,7 @@ class ViewController: UIViewController {
     let datePicker = UIDatePicker()
     let datePickerTwo = UIDatePicker()
     
-    static var entrant = Entrant(firstName: "", lastName: "", streetAddress: "", city: "", state: "", zipCode: 00000, dateOfBirth: createBirthday(month: 3, day: 24, year: 1993), entrantType: .FreeChildGuest)
+    static var entrant = Entrant(firstName: "", lastName: "", streetAddress: "", city: "", state: "", zipCode: "00000", dateOfBirth: createBirthday(month: 3, day: 24, year: 1993), entrantType: .FreeChildGuest)
     static var entrantAge = 0
     static var birthday: String = ""
 
@@ -252,6 +252,7 @@ class ViewController: UIViewController {
         cityField.backgroundColor = UIColor.white
         stateField.backgroundColor = UIColor.white
         zipCodeField.backgroundColor = UIColor.white
+        ViewController.entrant.entrantType = .SeasonPassGuest   
     }
     
     @IBAction func vipOptionPressed(_ sender: AnyObject) {
@@ -476,7 +477,7 @@ class ViewController: UIViewController {
             ViewController.entrant.lastName = lastNameField.text!
             ViewController.entrant.streetAddress = streetAddressField.text!
             ViewController.entrant.city = cityField.text!
-            ViewController.entrant.zipCode = Int (zipCodeField.text!)!
+            ViewController.entrant.zipCode = zipCodeField.text!
             ViewController.entrant.state = stateField.text!
 
             
@@ -493,7 +494,7 @@ class ViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
 
         }catch InputError.ChildOlderThanFive {
-            let alert = UIAlertController(title: "Age Limit Not Met", message: "Child must be at least 5 years old", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: "Age Limit Not Met", message: "Birthday was not provided or did not meet age requirement please check and try agian", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
