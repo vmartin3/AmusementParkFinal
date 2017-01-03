@@ -10,42 +10,62 @@ enum EntrantPassTypes: Discountable, AreaAccessability, RideAccessability{
     case RideServicesHourly
     case MaintenanceHourly
     case Manager
+    case SeasonPassGuest
+    case SeniorGuest
+    case ContractEmployee
+    case Vendor
     
     var foodDiscount: Double{
         switch self {
         case .ClassicGuest:
-            return 0.00
+            return 0.0
         case .VipGuest:
-            return 0.10
+            return 10.0
         case .FreeChildGuest:
-            return 0.00
+            return 0.0
         case .FoodServicesHourly:
-            return 0.15
+            return 15.0
         case .RideServicesHourly:
-            return 0.15
+            return 15.0
         case .MaintenanceHourly:
-            return 0.15
+            return 15.0
         case .Manager:
-            return 0.25
+            return 25.0
+        case .SeasonPassGuest:
+            return 10.0
+        case .SeniorGuest:
+            return 10.0
+        case .ContractEmployee:
+            return 0.0
+        case .Vendor:
+            return 0.0
         }
     }
     
     var merchandiseDiscount: Double{
         switch self {
         case .ClassicGuest:
-            return 0.00
+            return 0.0
         case .VipGuest:
-            return 0.20
+            return 20.0
         case .FreeChildGuest:
-            return 0.00
+            return 0.0
         case .FoodServicesHourly:
-            return 0.25
+            return 25.0
         case .RideServicesHourly:
-            return 0.25
+            return 25.0
         case .MaintenanceHourly:
-            return 0.25
+            return 25.0
         case .Manager:
-            return  0.25
+            return  25.0
+        case .SeasonPassGuest:
+            return 20.0
+        case .SeniorGuest:
+            return 10.0
+        case .ContractEmployee:
+            return 0.0
+        case .Vendor:
+            return 0.0
         }
     }
     
@@ -64,6 +84,14 @@ enum EntrantPassTypes: Discountable, AreaAccessability, RideAccessability{
         case .MaintenanceHourly:
             return true
         case .Manager:
+            return true
+        case .SeasonPassGuest:
+            return true
+        case .SeniorGuest:
+            return true
+        case .ContractEmployee:
+            return true
+        case .Vendor:
             return true
         }
     }
@@ -84,6 +112,14 @@ enum EntrantPassTypes: Discountable, AreaAccessability, RideAccessability{
             return false
         case .Manager:
             return false
+        case .SeasonPassGuest:
+            return true
+        case .SeniorGuest:
+            return true
+        case .ContractEmployee:
+            return true
+        case .Vendor:
+            return true
         }
     }
     
@@ -102,6 +138,14 @@ enum EntrantPassTypes: Discountable, AreaAccessability, RideAccessability{
         case .MaintenanceHourly:
             return true
         case .Manager:
+            return true
+        case .SeasonPassGuest:
+            return true
+        case .SeniorGuest:
+            return true
+        case .ContractEmployee:
+            return true
+        case .Vendor:
             return true
         }
     }
@@ -122,6 +166,14 @@ enum EntrantPassTypes: Discountable, AreaAccessability, RideAccessability{
             return true
         case .Manager:
             return true
+        case .SeasonPassGuest:
+            return false
+        case .SeniorGuest:
+            return false
+        case .ContractEmployee:
+            return true
+        case .Vendor:
+            return true
         }
     }
     
@@ -141,6 +193,14 @@ enum EntrantPassTypes: Discountable, AreaAccessability, RideAccessability{
             return false
         case .Manager:
             return true
+        case .SeasonPassGuest:
+            return false
+        case .SeniorGuest:
+            return false
+        case .ContractEmployee:
+            return false
+        case .Vendor:
+            return false
         }
     }
     
@@ -160,6 +220,14 @@ enum EntrantPassTypes: Discountable, AreaAccessability, RideAccessability{
             return true
         case .Manager:
             return true
+        case .SeasonPassGuest:
+            return false
+        case .SeniorGuest:
+            return false
+        case .ContractEmployee:
+            return false
+        case .Vendor:
+            return false
         }
     }
     
@@ -179,6 +247,41 @@ enum EntrantPassTypes: Discountable, AreaAccessability, RideAccessability{
             return true
         case .Manager:
             return true
+        case .SeasonPassGuest:
+            return false
+        case .SeniorGuest:
+            return false
+        case .ContractEmployee:
+            return false
+        case .Vendor:
+            return false
+        }
+    }
+    
+    var passType: String{
+        switch self {
+        case .ClassicGuest:
+            return "Classic Guest Pass"
+        case .VipGuest:
+            return "VIP Guest Pass"
+        case .FreeChildGuest:
+            return "Child Guest Pass"
+        case .FoodServicesHourly:
+            return "Food Service Pass"
+        case .RideServicesHourly:
+            return "Ride Service Pass"
+        case .MaintenanceHourly:
+            return "Maintenance Pass"
+        case .Manager:
+            return "Manager Pass"
+        case .SeasonPassGuest:
+            return "Season Guest Pass"
+        case .SeniorGuest:
+            return "Senior Guest Pass"
+        case .ContractEmployee:
+            return "Contract Employee Pass"
+        case .Vendor:
+            return "Vendor Pass"
         }
     }
     
@@ -233,28 +336,30 @@ protocol BasicEntrant {
 }
 
 //MARKER: Guest and Employee Classes
-class Guest: Entrant{
-    override init(firstName: String?, lastName: String?, streetAddress: String?, city: String?, state: String?, zipCode: Int?, dateOfBirth: Date?, entrantType: EntrantPassTypes?) {
-        super.init(firstName:firstName!, lastName:lastName!, streetAddress:streetAddress!, city:city!, state:state!, zipCode:zipCode!, dateOfBirth:dateOfBirth!, entrantType:entrantType!)
-    }
-}
-
-class Employee: Entrant{
-    override init(firstName: String!, lastName: String!, streetAddress: String!, city: String!, state: String!, zipCode: Int!, dateOfBirth: Date?, entrantType: EntrantPassTypes!) {
-        super.init(firstName:firstName!, lastName:lastName!, streetAddress:streetAddress!, city:city!, state:state!, zipCode:zipCode!, dateOfBirth:dateOfBirth!, entrantType:entrantType!)
-    }
-}
+//class Guest: Entrant{
+//    override init(firstName: String?, lastName: String?, streetAddress: String?, city: String?, state: String?, zipCode: Int?, dateOfBirth: Date?, entrantType: EntrantPassTypes?) {
+//        super.init(firstName:firstName!, lastName:lastName!, streetAddress:streetAddress!, city:city!, state:state!, zipCode:zipCode!, dateOfBirth:dateOfBirth!, entrantType:entrantType!)
+//    }
+//}
+//
+//class Employee: Entrant{
+//    override init(firstName: String!, lastName: String!, streetAddress: String!, city: String!, state: String!, zipCode: Int!, dateOfBirth: Date?, entrantType: EntrantPassTypes!) {
+//        super.init(firstName:firstName!, lastName:lastName!, streetAddress:streetAddress!, city:city!, state:state!, zipCode:zipCode!, dateOfBirth:dateOfBirth!, entrantType:entrantType!)
+//    }
+//}
 
 
 //MARKER: Methods to create passes
 func createPass(entrant: Entrant) throws{
-        if ((entrant.firstName == " " || entrant.lastName == " ") && entrant is Employee) {
+    if ((ViewController.entrant.firstName == "" || ViewController.entrant.lastName == "") && (entrant.entrantType == .FoodServicesHourly || entrant.entrantType == .MaintenanceHourly || entrant.entrantType == .RideServicesHourly)) {
             throw InputError.FullNameNotProvided
         }
-        if ((entrant.streetAddress == " " || entrant.city == " " || entrant.state == " ") && entrant is Employee){
+    
+    if ((ViewController.entrant.streetAddress == "" || ViewController.entrant.city == "" || ViewController.entrant.state == "") && (entrant.entrantType == .FoodServicesHourly || entrant.entrantType == .MaintenanceHourly || entrant.entrantType == .RideServicesHourly || entrant.entrantType == .ContractEmployee)){
             throw InputError.FullAddressNotProvided
         }
-        if ((entrant.entrantType == .FreeChildGuest && getAge(date: entrant.dateOfBirth) > 5) && entrant is Guest) {
+    
+        if ((ViewController.entrant.entrantType == .FreeChildGuest) && (ViewController.entrantAge > 5 || ViewController.birthday == "")) {
             throw InputError.ChildOlderThanFive
         }
         else {

@@ -10,26 +10,52 @@ import UIKit
 
 class CreatePass: UIViewController {
 
+    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var passType: UILabel!
+    @IBOutlet weak var featureOne: UILabel!
+    @IBOutlet weak var featureTwo: UILabel!
+    @IBOutlet weak var featureThree: UILabel!
+    @IBOutlet weak var testResultText: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print("Second VC, first name: \(ViewController.entrant.firstName)")
+        userName.text = ViewController.entrant.firstName
+        passType.text = ViewController.entrant.entrantType.passType
+        featureOne.text = "•\(String (ViewController.entrant.entrantType.foodDiscount))% Food Discount"
+        featureTwo.text = "•\(String (ViewController.entrant.entrantType.merchandiseDiscount))% Merchandise Discount"
+        if ViewController.entrant.entrantType.canAccessAllRides == false{
+            featureThree.text = "•Can Access All Rides"
+        }else{
+            featureThree.text = "•Cannot Access All Rides"
+        }
+        
+        
+        
         // Do any additional setup after loading the view.
     }
+    
+    
+    @IBAction func areaAccessPressed(_ sender: AnyObject) {
+        testResultText.text = "•Kitchen Access: \(ViewController.entrant.entrantType.canAccessKitchen)  \n •Office Access: \(ViewController.entrant.entrantType.canAccessOfficeArea) \n •Maintenance Access: \(ViewController.entrant.entrantType.canAccessMaintenanceArea)"
+    }
+ 
+    @IBAction func rideAccessPressed(_ sender: AnyObject) {
+        testResultText.text = "•Can Access All Rides: \(ViewController.entrant.entrantType.canAccessAllRides)"
+    }
+    
+    
+    @IBAction func discountAccessPressed(_ sender: AnyObject) {
+        testResultText.text = "•Food Discount: \(ViewController.entrant.entrantType.foodDiscount)% \n •Merchandise Discount: \(ViewController.entrant.entrantType.merchandiseDiscount)%"
+    }
+    
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
